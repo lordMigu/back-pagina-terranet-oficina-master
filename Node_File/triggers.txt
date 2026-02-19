@@ -1,0 +1,156 @@
+use terrabase;
+
+DROP TRIGGER if exists terrabase.stock_change;
+
+DELIMITER //
+create trigger stock_change
+after insert on movimiento
+for each row
+begin
+	DECLARE num INT Default 0 ;
+	if (new.tipomovimiento is not null and new.tipomovimiento = "EGRESO") then
+		UPDATE stock
+        set cantidad = cantidad - new.cantidad
+        where bodega_id = new.bodega_id
+        and producto_id = new.producto_id;
+	elseif (new.tipomovimiento is not null and new.tipomovimiento = "INGRESO") then
+        set num = (select count(*) from stock where bodega_id = new.bodega_id and producto_id = new.producto_id);
+        if(num = 1) then
+			UPDATE stock
+			set cantidad = cantidad + new.cantidad
+			where bodega_id = new.bodega_id
+			and producto_id = new.producto_id;
+        else 
+			insert into stock (cantidad, bodega_id, producto_id, created_at, updated_at)
+            values (new.cantidad, new.bodega_id, new.producto_id, CURRENT_DATE, CURRENT_DATE);
+        end if;
+	end if;
+end
+// DELIMITER ;
+
+
+
+DROP TRIGGER if exists terrabase.hojanueva;
+
+DELIMITER //
+create trigger hojanueva
+after insert on hojatrabajo
+for each row
+begin
+	DECLARE solicitudI INT Default 0 ;
+    if (new.id_actividad is not null) then
+		UPDATE actividad
+			set estado = "TERMINADO",
+            id_tecnico_id = new.usuario_creacion_id,
+            usuario_mod_id = new.usuario_creacion_id
+			where id = new.id_actividad;
+		set solicitudI = (select sum(solicitud_id) from actividad where id = new.id_actividad);
+		
+		if (solicitud is not null) then
+			UPDATE solicitud
+			set estado = "TERMINADO"
+			where id = solicitudI;
+		end if;
+    end if;
+end
+// DELIMITER ;
+
+DROP TRIGGER if exists terrabase.clientenuevo;
+
+DELIMITER //
+create trigger clientenuevo
+after insert on wisphub
+for each row
+begin
+
+    if (new.hojatrabajo_id is not null) then
+		UPDATE hojatrabajo
+			set estado = "USUARIO CREADO",
+            usuario_modificacion_id = new.usuario_creacion_id
+			where id = new.hojatrabajo_id;
+		
+    end if;
+end
+// DELIMITER ;
+
+
+DROP TRIGGER if exists terrabase.delactividad;
+
+DELIMITER //
+create trigger delactividad
+after delete on actividad
+for each row
+begin
+
+    if (old.id is not null) then
+		UPDATE hojatrabajo
+			set id_actividad =null
+			where id_actividad = old.id;
+		
+    end if;
+end
+// DELIMITER ;
+
+
+DROP TRIGGER if exists terrabase.addserie;
+DELIMITER //
+create trigger addserie
+before update on series
+for each row
+begin
+    if (old.bodega_id is not null and new.bodega_id is not null) then
+				SIGNAL SQLSTATE '45000' 
+				SET MESSAGE_TEXT = 'Error Serie En Uso';
+    end if;
+end
+// DELIMITER ;
+
+
+
+DROP TRIGGER if exists terrabase.actividadkm;
+
+DELIMITER //
+create trigger terrabase.actividadkm
+before update on actividad
+for each row
+begin
+	DECLARE km1 INT Default 0 ;
+	if (new.km is not null and new.id_cuadrilla_id is not null) then
+		set km1 = (SELECT sum(km) from vehiculo where cuadrilla_id = new.id_cuadrilla_id);
+		if (km1 >= new.km) then
+			SIGNAL SQLSTATE '45000' 
+			SET MESSAGE_TEXT = 'Km ingresado es menor al actual';
+		else
+			update vehiculo 
+            set km = new.km 
+            where cuadrilla_id = new.id_cuadrilla_id;
+		end if;
+	end if;
+end
+// DELIMITER ;
+
+
+DROP TRIGGER if exists terrabase.revisionkm;
+
+DELIMITER //
+create trigger terrabase.revisionkm
+before insert on revision
+for each row
+begin
+	DECLARE km1 INT Default 0 ;
+	if (new.km is not null) and (new.vehiculo_id is not null) then
+		set km1 = (SELECT sum(km) from vehiculo where id = new.vehiculo_id);
+		if (km1 >= new.km) then
+			SIGNAL SQLSTATE '45000' 
+			SET MESSAGE_TEXT = 'Km ingresado es menor al actual';
+		else 
+			update vehiculo 
+            set km = new.km 
+            where id = new.vehiculo_id;
+		end if;
+	else 
+		SIGNAL SQLSTATE '45000' 
+		SET MESSAGE_TEXT = 'ascascas';
+   end if;
+end
+// DELIMITER ;

@@ -1,0 +1,23 @@
+{
+  "name": "terranet",
+  "version": "1.0.0",
+  "description": "terranet erp node",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon  index.js"
+  },
+  "author": "terranet erp node",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.2",
+    "node-windows": "^1.0.0-beta.8",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
