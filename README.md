@@ -17,6 +17,14 @@ La aplicación toma los parámetros de conexión desde las variables de entorno 
 
 Nota: Estos valores se leen desde [core/settings.py](core/settings.py#L118-L123) con `config('DB_*')`. En producción gestione las credenciales con variables de entorno seguras.
 
+> * Desde el archivo settings debe permitir el uso de la ip cliente `ALLOWED_HOSTS = ['10.15.254.50']` que corresponde a la máquina anfitriona.
+> * En la máquina virtual de Ubuntu Server es necesario abrir el puerto 8000 con el comando: 
+>```bash 
+>sudo ufw allow 8000
+>```
+> * Existen varias cosas que deben cambiar en producción, por ejemplo no debería permitir a cualquier ip cliente, y los tokens de acceso no deberían duran para siempre.
+
+
 Endpoints principales
 ---------------------
 Todos los endpoints van bajo el prefijo `/api/` según [core/urls.py](core/urls.py#L1-L28). Además hay endpoints para obtención de tokens y documentación:
