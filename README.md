@@ -3,17 +3,17 @@ Proyecto backend Terranet - Información rápida
 
 Descripción
 -----------
-API REST para Terranet (Django + DRF). La configuración de la base de datos se carga desde variables de entorno (usa python-decouple).
+API REST para Terranet (Django + DRF). **Modo de desarrollo para usar en UbuntuServer con la base de datos "prueba".** La configuración de la base de datos se carga desde variables de entorno (usa python-decouple).
 
 Base de datos
 -------------
 La aplicación toma los parámetros de conexión desde las variables de entorno (archivo `.env` en el repo durante desarrollo). Valores actuales encontrados en el repositorio:
 
-- Host (IP): 10.100.254.162
+- Host (IP): 127.0.0.1
 - Puerto: 3306
-- Nombre de la base de datos: terrabase
-- Usuario: controlador
-- Contraseña: terrabase2023$
+- Nombre de la base de datos: prueba
+- Usuario: root
+- Contraseña: 1234
 
 Nota: Estos valores se leen desde [core/settings.py](core/settings.py#L118-L123) con `config('DB_*')`. En producción gestione las credenciales con variables de entorno seguras.
 

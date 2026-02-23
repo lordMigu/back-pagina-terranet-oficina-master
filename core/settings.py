@@ -20,7 +20,7 @@ DEBUG = config('DEBUG', cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','backterra.econtel.com.ec','10.100.254.178','pangolin-pumped-fox.ngrok-free.app','terra.econtel.com.ec','plataforma.terranet.com.ec']
+ALLOWED_HOSTS = ['10.15.254.50', '10.100.253.86', '127.0.0.1','localhost','backterra.econtel.com.ec','10.100.254.178','pangolin-pumped-fox.ngrok-free.app','terra.econtel.com.ec','plataforma.terranet.com.ec']
 
 
 # Application definition
@@ -53,7 +53,7 @@ REST_FRAMEWORK = {
     )
 }
 
-
+# Quitar en produccion los tokens de larga duracion y agregar rotacion de tokens
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=36500),  # Token de acceso válido por 100 años
     'REFRESH_TOKEN_LIFETIME': timedelta(days=36500),  # Token de actualización válido por 100 años
