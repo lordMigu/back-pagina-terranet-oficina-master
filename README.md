@@ -82,9 +82,32 @@ Dónde mirar el código
   - [agenda/urls.py](agenda/urls.py#L1-L30)
   - [contabilidad/urls.py](contabilidad/urls.py#L1-L40)
 
+Problemas conocidos a corregir
+------------------------------
+### 1. **Campos DateTimeField en store/models.py**
+- ⚠️ **Problema:** Los campos `created_at` y `updated_at` usan `default=timezone.now`, lo que causa error `'str' object has no attribute 'utcoffset'` al listar productos.
+- ✅ **Solución:** Cambiar `default=timezone.now` por `auto_now_add=True` (para created_at) y `auto_now=True` (para updated_at).
+- 📝 **Afecta:** `/api/v1/producto/`, `/api/v1/stock/`, y otros endpoints de store.
+
+### 2. **Tokens de WishHub expuestos en código**
+- ⚠️ **Problema:** El token de API de WishHub `Api-Key hM1L5TRK.YkGmkccbO8RGJOEeVHPhv9uHV6m1lcFf` está hardcodeado en [user/views.py](user/views.py#L131-L197) (líneas 131, 159, 178, 197).
+- ✅ **Solución:** Mover el token a variables de entorno usando `config('WISPHUB_API_KEY')` en lugar de incluirlo en el código fuente.
+- 🔒 **Impacto de seguridad:** Alto - Token visible en repositorio Git y en historial.
+- 📝 **Afecta:** Endpoints `/api/api/clientes/`, `/api/api/planes/`, `/api/api/zonas/`.
+
+### 3. **Configuración de permisos muy permisiva en producción**
+- ⚠️ **Problema:** `ALLOWED_HOSTS` está configurado para permitir IPs específicas, pero en producción debe ser más restrictivo.
+- ✅ **Solución:** Validar ALLOWED_HOSTS en [core/settings.py](core/settings.py#L118-L123) según el entorno (desarrollo vs producción).
+
+### 4. **Tokens JWT sin expiración configurada**
+- ⚠️ **Problema:** Los tokens de acceso JWT pueden durar demasiado tiempo en producción, comprometiendo la seguridad.
+- ✅ **Solución:** Configurar `ACCESS_TOKEN_LIFETIME` y `REFRESH_TOKEN_LIFETIME` en las settings de JWT.
+
 Advertencias y buenas prácticas
--------------------------------
+------------------------------
 - No deje credenciales sensibles en archivos públicos. Si va a subir el repo, elimine o reemplace las credenciales del archivo `.env`.
 - Para pruebas locales, puede usar el `.env` incluido; en staging/producción use variables de entorno seguras.
+- Asegúrese de que el `.gitignore` incluya `.env` para evitar exponer credenciales en el repositorio.
+- Antes de desplegar a producción, revise las variables de entorno y configuraciones de seguridad mencionadas en la sección "Problemas conocidos a corregir".
 
 Si quieres, puedo añadir ejemplos de requests curl para cada endpoint o generar documentación OpenAPI completa.
