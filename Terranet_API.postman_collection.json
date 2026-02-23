@@ -1,0 +1,1908 @@
+{
+  "info": {
+    "name": "Terranet API",
+    "description": "Collection de endpoints para la API de Terranet",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "Obtener Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/token/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "token", ""]
+            }
+          }
+        },
+        {
+          "name": "Refrescar Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/token/refresh/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "token", "refresh", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usuario (User)",
+      "item": [
+        {
+          "name": "Rol",
+          "item": [
+            {
+              "name": "Listar Roles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/rol/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "rol", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Rol",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/rol/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "rol", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Usuario",
+          "item": [
+            {
+              "name": "Listar Usuarios",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/usuario/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "usuario", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Usuario",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/usuario/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "usuario", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Autenticar Usuario",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"usuario\",\n  \"password\": \"contraseña\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/usuario/authenticate/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "usuario", "authenticate", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Permiso",
+          "item": [
+            {
+              "name": "Listar Permisos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/permiso/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "permiso", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Permiso",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/permiso/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "permiso", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Versión",
+          "item": [
+            {
+              "name": "Listar Versiones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/version/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "version", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Versión",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/version/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "version", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Clientes",
+          "item": [
+            {
+              "name": "Listar Clientes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/clientes/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "clientes", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Planes",
+          "item": [
+            {
+              "name": "Listar Planes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/planes/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "planes", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Zonas",
+          "item": [
+            {
+              "name": "Listar Zonas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/zonas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "zonas", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Series Último Movimiento",
+          "item": [
+            {
+              "name": "Obtener Series",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/series_ult_miv/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "series_ult_miv", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Estadísticas",
+          "item": [
+            {
+              "name": "Tiempo Promedio Instalación",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/tiempo_prom_instalacion/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "tiempo_prom_instalacion", ""]
+                }
+              }
+            },
+            {
+              "name": "Tiempo Promedio Visita Técnica",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/tiempo_prom_visitat/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "tiempo_prom_visitat", ""]
+                }
+              }
+            },
+            {
+              "name": "Instalaciones Realizadas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/instalaciones_realizadas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "instalaciones_realizadas", ""]
+                }
+              }
+            },
+            {
+              "name": "Visitas Realizadas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/visitas_realizadas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "visitas_realizadas", ""]
+                }
+              }
+            },
+            {
+              "name": "Migraciones Realizadas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/migraciones_realizadas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "migraciones_realizadas", ""]
+                }
+              }
+            },
+            {
+              "name": "Tiempos Cuadrilla",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/tiempos_cuadrilla/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "tiempos_cuadrilla", ""]
+                }
+              }
+            },
+            {
+              "name": "Series Disponibles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/series_disponibles/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "series_disponibles", ""]
+                }
+              }
+            },
+            {
+              "name": "Desgloce",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/desgloce/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "desgloce", ""]
+                }
+              }
+            },
+            {
+              "name": "Alertas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/alertas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "alertas", ""]
+                }
+              }
+            },
+            {
+              "name": "Actividades",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/actividades/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "actividades", ""]
+                }
+              }
+            },
+            {
+              "name": "Solicitudes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/solicitudes/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "solicitudes", ""]
+                }
+              }
+            },
+            {
+              "name": "Hojas de Trabajo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/hojas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "hojas", ""]
+                }
+              }
+            },
+            {
+              "name": "Cuadrillas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/api/cuadrillas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "api", "cuadrillas", ""]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Store (Inventario)",
+      "item": [
+        {
+          "name": "Bodega",
+          "item": [
+            {
+              "name": "Listar Bodegas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/bodega/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "bodega", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Bodega",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/bodega/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "bodega", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Producto",
+          "item": [
+            {
+              "name": "Listar Productos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/producto/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "producto", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Producto",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/producto/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "producto", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Productos en Bodega",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/productosby/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "productosby", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Proveedor",
+          "item": [
+            {
+              "name": "Listar Proveedores",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/proveedor/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "proveedor", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Proveedor",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/proveedor/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "proveedor", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Stock",
+          "item": [
+            {
+              "name": "Listar Stocks",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/stock/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "stock", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Stock",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/stock/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "stock", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Stocks por Producto y Bodega",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/stockby/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "stockby", ""]
+                }
+              }
+            },
+            {
+              "name": "Stock por Debajo del Mínimo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/stock/below-minimum/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "stock", "below-minimum", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Movimiento",
+          "item": [
+            {
+              "name": "Listar Movimientos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/movimiento/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "movimiento", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Movimiento",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/movimiento/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "movimiento", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Movimientos Compuestos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/movimientoCompuesto/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "movimientoCompuesto", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Marca",
+          "item": [
+            {
+              "name": "Listar Marcas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/marca/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "marca", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Marca",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/marca/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "marca", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Modelo",
+          "item": [
+            {
+              "name": "Listar Modelos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/modelo/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "modelo", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Modelo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/modelo/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "modelo", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unidad",
+          "item": [
+            {
+              "name": "Listar Unidades",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/unidad/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "unidad", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Unidad",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/unidad/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "unidad", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Serie",
+          "item": [
+            {
+              "name": "Listar Series",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/serie/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "serie", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Serie",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/serie/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "serie", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Serie 2",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/serie2/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "serie2", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Series por Producto y Bodega",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/seriesby/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "seriesby", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Motivo Movimiento",
+          "item": [
+            {
+              "name": "Listar Motivos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/motivo_movimiento/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "motivo_movimiento", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Motivo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/motivo_movimiento/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "motivo_movimiento", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Transferencia",
+          "item": [
+            {
+              "name": "Listar Transferencias",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/transferencia/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "transferencia", ""]
+                }
+              }
+            },
+            {
+              "name": "Crear Transferencia",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/transferencia/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "transferencia", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Transferencia",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/transferencia/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "transferencia", "1", ""]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rutas",
+      "item": [
+        {
+          "name": "Actividades",
+          "item": [
+            {
+              "name": "Listar Actividades",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/actividades/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "actividades", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Actividad",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/actividades/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "actividades", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Actividades por Estado",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/actividades/estado/pendiente/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "actividades", "estado", "pendiente", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Historial de Actividades",
+          "item": [
+            {
+              "name": "Listar Historial",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/actividadhistorial/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "actividadhistorial", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Detalle Historial",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/actividadhistorial/detail/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "actividadhistorial", "detail", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rutas",
+          "item": [
+            {
+              "name": "Listar Rutas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/rutas/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "rutas", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Ruta",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/rutas/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "rutas", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Rutas por Parámetros",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/rutasby/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "rutasby", ""]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Agenda",
+      "item": [
+        {
+          "name": "Tipo Solicitud",
+          "item": [
+            {
+              "name": "Listar Tipos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/tipoSolicitudes/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "tipoSolicitudes", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Tipo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/tipoSolicitudes/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "tipoSolicitudes", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Kits",
+          "item": [
+            {
+              "name": "Listar Kits",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/kits/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "kits", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Kit",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/kits/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "kits", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Kit X Productos",
+          "item": [
+            {
+              "name": "Listar Kit X Productos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/kitXProductos/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "kitXProductos", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Kit X Producto",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/kitXProductos/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "kitXProductos", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Solicitud",
+          "item": [
+            {
+              "name": "Listar Solicitudes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/solicitud/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "solicitud", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Solicitud",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/solicitud/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "solicitud", "1", ""]
+                }
+              }
+            },
+            {
+              "name": "Solicitudes por Estado",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/solicitud/estado/pendiente/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "solicitud", "estado", "pendiente", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Hoja de Trabajo",
+          "item": [
+            {
+              "name": "Listar Hojas",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/hojatrabajo/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "hojatrabajo", ""]
+                }
+              }
+            },
+            {
+              "name": "Hojas por Parámetros",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/hojatrabajoby/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "hojatrabajoby", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Hoja",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/hojatrabajo/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "hojatrabajo", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Wisphub",
+          "item": [
+            {
+              "name": "Listar Usuarios Wisp",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/userwisp/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "userwisp", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Usuario Wisp",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/userwisp/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "userwisp", "1", ""]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Contabilidad",
+      "item": [
+        {
+          "name": "Combustible",
+          "item": [
+            {
+              "name": "Listar Combustibles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/combustibles/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "combustibles", ""]
+                }
+              }
+            },
+            {
+              "name": "Crear Combustible",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/combustibles/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "combustibles", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Combustible",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/combustibles/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "combustibles", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Recepción",
+          "item": [
+            {
+              "name": "Listar Recepciones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/recepciones/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "recepciones", ""]
+                }
+              }
+            },
+            {
+              "name": "Crear Recepción",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/recepciones/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "recepciones", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Recepción",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/recepciones/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "recepciones", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Motivo Gasto",
+          "item": [
+            {
+              "name": "Listar Motivos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/motivo_gastos/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "motivo_gastos", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Motivo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/motivo_gastos/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "motivo_gastos", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Revisión",
+          "item": [
+            {
+              "name": "Listar Revisiones",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/revisiones/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "revisiones", ""]
+                }
+              }
+            },
+            {
+              "name": "Crear Revisión",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/revisiones/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "revisiones", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Revisión",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/revisiones/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "revisiones", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Vehículo",
+          "item": [
+            {
+              "name": "Listar Vehículos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/vehiculos/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "vehiculos", ""]
+                }
+              }
+            },
+            {
+              "name": "Crear Vehículo",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/vehiculos/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "vehiculos", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Vehículo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/vehiculos/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "vehiculos", "1", ""]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tipo Revisión",
+          "item": [
+            {
+              "name": "Listar Tipos",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/tipo_revision/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "tipo_revision", ""]
+                }
+              }
+            },
+            {
+              "name": "Obtener Tipo",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{access_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/tipo_revision/1/",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "tipo_revision", "1", ""]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "usuario",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "contraseña",
+      "type": "string"
+    }
+  ]
+}
