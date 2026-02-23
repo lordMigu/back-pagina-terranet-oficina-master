@@ -22,7 +22,7 @@ Nota: Estos valores se leen desde [core/settings.py](core/settings.py#L118-L123)
 >```bash 
 >sudo ufw allow 8000
 >```
-> * Existen varias cosas que deben cambiar en producción, por ejemplo no debería permitir a cualquier ip cliente, y los tokens de acceso no deberían duran para siempre.
+> * Existen varias cosas que deben cambiar en producción, por ejemplo no debería permitir a cualquier ip cliente, y los tokens de acceso no deberían durar para siempre.
 
 
 Endpoints principales
