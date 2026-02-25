@@ -109,5 +109,3 @@ Advertencias y buenas prácticas
 - Para pruebas locales, puede usar el `.env` incluido; en staging/producción use variables de entorno seguras.
 - Asegúrese de que el `.gitignore` incluya `.env` para evitar exponer credenciales en el repositorio.
 - Antes de desplegar a producción, revise las variables de entorno y configuraciones de seguridad mencionadas en la sección "Problemas conocidos a corregir".
-
-Si quieres, puedo añadir ejemplos de requests curl para cada endpoint o generar documentación OpenAPI completa.

@@ -4,7 +4,8 @@ const pool = require("./BD/db");
 
 const app = express();
 const port = 8559;
-const host = '10.100.254.162'
+const host = 'localhost';
+// const host = '10.100.254.162' // produccion
 
 app.use(bodyParser.json());
 
