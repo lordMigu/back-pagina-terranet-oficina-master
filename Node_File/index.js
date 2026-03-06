@@ -508,7 +508,7 @@ app.get("/hojas/:inicio/:fin", async (req, res) => {
       `select h.*, s.id as solicitud, s.tipo, s.cedula, s.nombres_cliente from hojatrabajo h left join actividad a 
       on h.id_actividad = a.id left join solicitud s 
       on s.id = solicitud_id
-      where h.created_at between "${inicio}" and "${fin}" ;`
+      where h.created_at between "${inicio}" and "${fin}" and s.tipo is not null;`
     );
     connection.release();
 

@@ -7,23 +7,34 @@ API REST para Terranet (Django + DRF). **Modo de desarrollo para usar en UbuntuS
 
 Base de datos
 -------------
-La aplicación toma los parámetros de conexión desde las variables de entorno (archivo `.env` en el repo durante desarrollo). Valores actuales encontrados en el repositorio:
+La aplicación toma los parámetros de conexión desde las variables de entorno (archivo `.env` en el repo durante desarrollo). Valores actuales:
 
-- Host (IP): 127.0.0.1
+- Host (IP): 10.100.253.86
 - Puerto: 3306
-- Nombre de la base de datos: prueba
-- Usuario: root
-- Contraseña: 1234
+- Nombre de la base de datos: terrabase
+- Usuario: controlador
+- Contraseña: terrabase2023$
 
 Nota: Estos valores se leen desde [core/settings.py](core/settings.py#L118-L123) con `config('DB_*')`. En producción gestione las credenciales con variables de entorno seguras.
 
-> * Desde el archivo settings debe permitir el uso de la ip cliente `ALLOWED_HOSTS = ['10.15.254.50']` que corresponde a la máquina anfitriona.
+> * Desde el archivo settings debe permitir el uso de la ip cliente `ALLOWED_HOSTS = ['10.15.254.50']` que corresponde a la máquina anfitriona, o dejar `['*']` para permitir el uso de cualquier ip cliente.
 > * En la máquina virtual de Ubuntu Server es necesario abrir el puerto 8000 con el comando: 
 >```bash 
 >sudo ufw allow 8000
 >```
 > * Existen varias cosas que deben cambiar en producción, por ejemplo no debería permitir a cualquier ip cliente, y los tokens de acceso no deberían durar para siempre.
 
+Proceso de instalación para pruebas:
+---
+
+Desde la carpeta raíz instalar los `requeriments.txt` activando el entorno virtual:
+> Activar comando uno a la vez.
+
+```bash
+source ./env/bin/activate
+pip install -r requeriments.txt
+python manage.py runserver
+```
 
 Endpoints principales
 ---------------------

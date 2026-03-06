@@ -31,7 +31,4 @@ urlpatterns = [
     path('api/desgloce/', Desgloce.as_view(), name='desgloce'),
 
     path('api/alertas/', Alertas.as_view(), name='alertas_vehiculo'),
-
-
-
     ]
