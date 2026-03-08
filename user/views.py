@@ -212,7 +212,7 @@ class SerieUltimoMov(APIView):
     permission_classes = [IsAuthenticated]
     #@swagger_auto_schema(tags=['Series']) 
     def get(self, request, *args, **kwargs):
-        url = f'http://{config("DB_HOST")}:8559/serie_ultimo_mov'
+        url = f'http://{config("DB_HOST_NODE")}:8559/serie_ultimo_mov'
         headers={"Content-Type":"text"}
 
         try:
@@ -232,9 +232,9 @@ class TiempoInstalacion(APIView):
 
         # Determinar la URL de la API según el parámetro
         if parametro == 'tecnico':
-            url = f'http://{config("DB_HOST")}:8559/time_prom_inst_tecn/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/time_prom_inst_tecn/'
         elif parametro == 'cuadrilla':
-            url = f'http://{config("DB_HOST")}:8559/time_prom_inst_cuad/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/time_prom_inst_cuad/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -257,9 +257,9 @@ class TiempoVistaTecnica(APIView):
         parametro = request.query_params.get('tipo', None)
 
         if parametro == 'tecnico':
-            url = f'http://{config("DB_HOST")}:8559/time_prom_vist_tecn/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/time_prom_vist_tecn/'
         elif parametro == 'cuadrilla':
-            url = f'http://{config("DB_HOST")}:8559/time_prom_vist_cuad/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/time_prom_vist_cuad/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -284,9 +284,9 @@ class Instalaciones(APIView):
 
         # Determinar la URL de la API según el parámetro
         if parametro == 'tecnico':
-            url = f'http://{config("DB_HOST")}:8559/isntalac_realiz_tecnico/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/isntalac_realiz_tecnico/'
         elif parametro == 'cuadrilla':
-            url = f'http://{config("DB_HOST")}:8559/isntalac_realiz_cuadrilla/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/isntalac_realiz_cuadrilla/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -310,9 +310,9 @@ class VisitaTecnica(APIView):
 
         # Determinar la URL de la API según el parámetro
         if parametro == 'tecnico':
-            url = f'http://{config("DB_HOST")}:8559/visitaTecn_realiz_tecnico/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/visitaTecn_realiz_tecnico/'
         elif parametro == 'cuadrilla':
-            url = f'http://{config("DB_HOST")}:8559/visitaTecn_realiz_cuadrilla/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/visitaTecn_realiz_cuadrilla/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -336,9 +336,9 @@ class Migracion(APIView):
 
         # Determinar la URL de la API según el parámetro
         if parametro == 'tecnico':
-            url = f'http://{config('DB_HOST')}:8559/migracion_realiz_tecnico/'
+            url = f'http://{config('DB_HOST_NODE')}:8559/migracion_realiz_tecnico/'
         elif parametro == 'cuadrilla':
-            url = f'http://{config('DB_HOST')}:8559/migracion_realiz_cuadrilla/'
+            url = f'http://{config('DB_HOST_NODE')}:8559/migracion_realiz_cuadrilla/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -363,11 +363,11 @@ class TiemposCuadrilla(APIView):
 
         # Determinar la URL de la API según el parámetro
         if parametro == 'Tiempo_recorrido_dia':
-            url = f'http://{config("DB_HOST")}:8559/Tiempo_recorrido_dia/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/Tiempo_recorrido_dia/'
         elif parametro == 'Tiempo_recorrido_mes':
-            url = f'http://{config("DB_HOST")}:8559/Tiempo_recorrido_mes/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/Tiempo_recorrido_mes/'
         elif parametro == 'tiempo_promedio_dia':
-            url = f'http://{config("DB_HOST")}:8559/Tiempo_Promedio_rec_dia/'
+            url = f'http://{config("DB_HOST_NODE")}:8559/Tiempo_Promedio_rec_dia/'
         else:
             return Response({'error': 'Parámetro incorrecto'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -387,7 +387,7 @@ class Actividad(APIView):
     permission_classes = [IsAuthenticated]
     #@swagger_auto_schema(tags=['Actividad']) 
     def get(self, request, *args, **kwargs):
-        url = f'http://{config("DB_HOST")}:8559/actividades'
+        url = f'http://{config("DB_HOST_NODE")}:8559/actividades'
         headers={"Content-Type":"text"}
 
         try:
@@ -409,15 +409,15 @@ class Solicitud(APIView):
         inicio = self.request.query_params.get('inicio', None)
         fin= self.request.query_params.get('fin', None)
         if parametro != 'TODOS' and inicio and fin:
-            url = f'http://{config("DB_HOST")}:8559/solicitudes/{parametro}/{inicio}/{fin}'
+            url = f'http://{config("DB_HOST_NODE")}:8559/solicitudes/{parametro}/{inicio}/{fin}'
         elif parametro == 'TODOS' and inicio and fin:
-            url = f'http://{config("DB_HOST")}:8559/solicitudes/{inicio}/{fin}'
+            url = f'http://{config("DB_HOST_NODE")}:8559/solicitudes/{inicio}/{fin}'
         elif parametro != 'TODOS':
-            url = f'http://{config("DB_HOST")}:8559/solicitudes/{parametro}'
+            url = f'http://{config("DB_HOST_NODE")}:8559/solicitudes/{parametro}'
         elif inicio and fin:
-            url = f'http://{config("DB_HOST")}:8559/solicitudes/{inicio}/{fin}'
+            url = f'http://{config("DB_HOST_NODE")}:8559/solicitudes/{inicio}/{fin}'
         else:
-            url = f'http://{config("DB_HOST")}:8559/solicitudes'
+            url = f'http://{config("DB_HOST_NODE")}:8559/solicitudes'
 
         headers={"Content-Type":"text"}
 
@@ -439,9 +439,9 @@ class Hoja(APIView):
         inicio = self.request.query_params.get('inicio', None)
         fin= self.request.query_params.get('fin', None)
         if inicio and fin:
-            url = f'http://{config("DB_HOST")}:8559/hojas/{inicio}/{fin}'    
+            url = f'http://{config("DB_HOST_NODE")}:8559/hojas/{inicio}/{fin}'    
         else:
-            url = f'http://{config("DB_HOST")}:8559/hojas'
+            url = f'http://{config("DB_HOST_NODE")}:8559/hojas'
 
         headers={"Content-Type":"text"}
 
@@ -460,7 +460,7 @@ class Cuadrilla(APIView):
     permission_classes = [IsAuthenticated]
     #@swagger_auto_schema(tags=['Cuadrilla']) 
     def get(self, request, *args, **kwargs):
-        url = f'http://{config("DB_HOST")}:8559/cuadrillas'
+        url = f'http://{config("DB_HOST_NODE")}:8559/cuadrillas'
         headers={"Content-Type":"text"}
 
         try:
@@ -478,7 +478,7 @@ class SeriesDisponibles(APIView):
     permission_classes = [IsAuthenticated]
     #@swagger_auto_schema(tags=['SeriesDisponibles']) 
     def get(self, request, *args, **kwargs):
-        url = f'http://{config("DB_HOST")}:8559/seriesdisponibles'
+        url = f'http://{config("DB_HOST_NODE")}:8559/seriesdisponibles'
         headers={"Content-Type":"text"}
 
         try:
@@ -496,7 +496,7 @@ class Desgloce(APIView):
     permission_classes = [IsAuthenticated]
     #@swagger_auto_schema(tags=['Desgloce']) 
     def get(self, request, *args, **kwargs):
-        url = f'http://{config("DB_HOST")}:8559/desgloce'
+        url = f'http://{config("DB_HOST_NODE")}:8559/desgloce'
         headers={"Content-Type":"text"}
 
         try:
@@ -517,9 +517,9 @@ class Alertas(APIView):
 
         vehiculo = self.request.query_params.get('vehiculo', None)
         if vehiculo:
-            url = f'http://{config("DB_HOST")}:8559/alerta/{vehiculo}'
+            url = f'http://{config("DB_HOST_NODE")}:8559/alerta/{vehiculo}'
         else:
-            url = f'http://{config("DB_HOST")}:8559/alerta'
+            url = f'http://{config("DB_HOST_NODE")}:8559/alerta'
         headers={"Content-Type":"text"}
 
         try:

@@ -1,6 +1,12 @@
 Proyecto backend Terranet - Información rápida
 ============================================
 
+Cambios recientes
+---
+1. Se agregó una nueva variable de entorno para la api de Node, asi no se repite el HOST en cada endpoint de [views.py](user\views.py).
+```bash
+DB_HOST_NODE=localhost
+```
 Descripción
 -----------
 API REST para Terranet (Django + DRF). **Modo de desarrollo para usar en UbuntuServer con la base de datos "prueba".** La configuración de la base de datos se carga desde variables de entorno (usa python-decouple).
